@@ -1,0 +1,42 @@
+SELECT customer.customer_first_name, customer.customer_last_name, recipient.recipient_first_name, recipient.recipient_last_name
+FROM customer
+INNER JOIN `connect`
+ON customer.customer_id = `connect`.`connect_id`
+INNER JOIN recipient
+ON `connect`.`recipient_id` = recipient.recipient_id;
+
+
+SELECT employee_extern.emp_ext_hire_date, employee_extern.emp_ext_last_name
+FROM deseco	
+INNER JOIN lead_emp_ext
+ON deseco.deseco_id = lead_emp_ext.deseco_id
+INNER JOIN employee_extern
+ON lead_emp_ext.emp_ext_id = employee_extern.emp_ext_id;
+
+SELECT rec_address.rec_address_country
+FROM recipient
+INNER JOIN rec_lives
+ON recipient.recipient_id = rec_lives.recipient_id
+INNER JOIN rec_address
+ON rec_lives.rec_address_id = rec_address.rec_address_id;
+
+SELECT customer.customer_last_name, cus_address.cus_address_city
+FROM customer
+INNER JOIN cus_lives
+ON customer.customer_id = cus_lives.customer_id
+INNER JOIN cus_address
+ON cus_address.cus_address_id = cus_lives.cus_lives_id;
+
+SELECT deseco.deseco_name, package_mail.paMa_status
+FROM deseco
+INNER JOIN keep
+on deseco.deseco_id = keep.deseco_id
+INNER JOIN package_mail
+ON keep.paMa_id = package_mail.paMa_id;
+
+SELECT package_mail.paMa_id, location.locationi_category, location.location_kind
+FROM package_mail
+INNER JOIN clueup
+ON package_mail.paMa_id = clueup.paMa_id
+INNER JOIN location
+ON clueup.location_id = location.location_id;
